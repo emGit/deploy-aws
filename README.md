@@ -9,6 +9,9 @@ curl --request GET 'afd9067f5a05147f7b357d8d27478735-906895576.us-east-2.elb.ama
 NAME             TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE     SELECTOR
 simple-jwt-api   LoadBalancer   10.100.224.238   afd9067f5a05147f7b357d8d27478735-906895576.us-east-2.elb.amazonaws.com   80:31812/TCP   9m53s   app=simple-jwt-api
 
+# GitHub Url
+https://github.com/emGit/deploy-aws
+
 # Deploying a Flask API
 
 This is the project starter repo for the fourth course in the [Udacity Full Stack Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004): Server Deployment, Containerization, and Testing.
