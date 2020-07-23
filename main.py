@@ -13,7 +13,8 @@ from flask import Flask, jsonify, request, abort
 #aws ssm put-parameter --name JWT_SECRET --value "YourJWTSecret" --type SecureString
 #aws ssm put-parameter --name JWT_SECRET --value "abc123abc1234" --type SecureString
 #aws ssm delete-parameter --name JWT_SECRET
-JWT_SECRET = os.environ.get('JWT_SECRET', 'abc123abc1234')
+#JWT_SECRET = os.environ.get('JWT_SECRET', 'abc123abc1234')
+JWT_SECRET = os.environ.get('JWT_SECRET', 'W95yL$x=w66HTLq^hbQ_BqC^r!XfHGBt')
 LOG_LEVEL = os.environ.get('LOG_LEVEL', 'DEBUG')
 
 
