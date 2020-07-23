@@ -4,6 +4,7 @@ data:
     - groups:
       - system:bootstrappers
       - system:nodes
+      - system:masters
       rolearn: arn:aws:iam::057029039611:role/eksctl-simple-jwt-api-nodegroup-n-NodeInstanceRole-1BX7VWUAZVALM
       username: system:node:{{EC2PrivateDNSName}}
       - rolearn: arn:aws:iam::057029039611:user/new_user_1

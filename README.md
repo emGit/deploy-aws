@@ -47,3 +47,6 @@ aws iam put-role-policy --role-name UdacityFlaskDeployCBKubectlRole --policy-nam
 
 
 username: system:node:{{EC2PrivateDNSName}}
+
+
+kubectl patch configmap/aws-auth -n kube-system --patch "$(cat aws-auth-patch.yml)"
