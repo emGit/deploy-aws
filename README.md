@@ -1,3 +1,14 @@
+# External IP
+kubectl get services simple-jwt-api -o wide
+
+IP = afd9067f5a05147f7b357d8d27478735-906895576.us-east-2.elb.amazonaws.com
+
+export TOKEN=`curl -d '{"email":"test","password":"test"}' -H "Content-Type: application/json" -X POST afd9067f5a05147f7b357d8d27478735-906895576.us-east-2.elb.amazonaws.com/auth  | jq -r '.token'`
+curl --request GET 'afd9067f5a05147f7b357d8d27478735-906895576.us-east-2.elb.amazonaws.com/contents' -H "Authorization: Bearer ${TOKEN}" | jq
+
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)        AGE     SELECTOR
+simple-jwt-api   LoadBalancer   10.100.224.238   afd9067f5a05147f7b357d8d27478735-906895576.us-east-2.elb.amazonaws.com   80:31812/TCP   9m53s   app=simple-jwt-api
+
 # Deploying a Flask API
 
 This is the project starter repo for the fourth course in the [Udacity Full Stack Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004): Server Deployment, Containerization, and Testing.
@@ -36,17 +47,3 @@ Completing the project involves several steps:
 6. Create a CodeBuild stage which will build, test, and deploy your code
 
 For more detail about each of these steps, see the project lesson [here](https://classroom.udacity.com/nanodegrees/nd004/parts/1d842ebf-5b10-4749-9e5e-ef28fe98f173/modules/ac13842f-c841-4c1a-b284-b47899f4613d/lessons/becb2dac-c108-4143-8f6c-11b30413e28d/concepts/092cdb35-28f7-4145-b6e6-6278b8dd7527).
-
-## Notes
-TRUST="{ \"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": { \"AWS\": \"arn:aws:iam::057029039611:root\" }, \"Action\": \"sts:AssumeRole\" } ] }"
-
-aws iam create-role --role-name UdacityFlaskDeployCBKubectlRole --assume-role-policy-document "$TRUST" --output text --query 'Role.Arn'
-
-   
-aws iam put-role-policy --role-name UdacityFlaskDeployCBKubectlRole --policy-name eks-describe --policy-document file://iam-role-policy.json
-
-
-username: system:node:{{EC2PrivateDNSName}}
-
-
-kubectl patch configmap/aws-auth -n kube-system --patch "$(cat aws-auth-patch.yml)"
